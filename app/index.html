@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{appName}}</title>
+    <meta name="description" content="Event Booking">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+
+    <link rel="stylesheet" href="app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  </head>
+
+  <body ng-cloak data-ng-controller="appController">
+    <!-- Page Header -->
+    <div data-page-header 
+      data-app-name="{{appName}}" 
+      data-current-state="{{currentState}}"
+      data-user-email="{{userEmail}}">
+    </div>
+
+    <!-- Page Content -->
+    <div class="container page-content">
+      <div class="row">
+        <div ui-view></div>
+      </div>
+    </div>
+
+    <!-- Page Footer -->
+    <footer class="py-2 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Event Booking 2017</p>
+      </div>
+    </footer>
+
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="lib/angular-resource.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/ngstorage/ngstorage.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="app.js"></script>
+    <script src="app.controller.js"></script>
+    <script src="data/eventsMock.js"></script>
+    <script src="common/directives/compareTo.directive.js"></script>
+    <script src="common/directives/pageHeader.directive.js"></script>
+    <script src="common/services/auth.service.js"></script>
+    <script src="common/services/events.service.js"></script>
+    <script src="login/login.controller.js"></script>
+    <script src="register/register.controller.js"></script>
+    <script src="myevents/myevents.controller.js"></script>
+     <script src="events/eventList.controller.js"></script>
+    <script src="events/eventDetails.controller.js"></script>
+  </body>
+
+</html>

@@ -1,0 +1,80 @@
+body {
+    padding-top: 54px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+    }
+}
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.page-title {
+  font-size: 2em;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.page-content {
+  margin-bottom: 60px;
+}
+
+.details-content {
+  margin: 10px;
+  min-width: 960px;
+  border: solid 1px #eeeeee;
+  background-color: #eeeeee;
+}
+
+.details-content form {
+  margin: 10px;
+}
+
+.details-content form button {
+  float: right;
+  margin-left: 5px;
+}
+
+.list-header td {
+  font-weight: bold;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.error-text, .required {
+  color: #ff0000;
+}
+.error-input {
+  border: 1px solid #ff0000;
+}

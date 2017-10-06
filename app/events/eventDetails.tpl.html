@@ -1,0 +1,34 @@
+<div class="details-content">
+    <form>
+        <div class="form-group row page-title">
+            {{title}}
+        </div>
+        <div ng-if="!userEmail" class="form-text error-text">Please login to register events</div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9">
+                {{evt.desc}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Venue</label>
+            <div class="col-sm-9">
+                {{evt.venue}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">DateTime</label>
+            <div class="col-sm-9">
+                {{evt.dateTime}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-8"></div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-dark" ng-click="onBackClicked()">Back</button>
+                <button type="button" class="btn btn-success" ng-if="userEmail" ng-hide="registeredEvents.indexOf(evt.id) > -1" ng-click="onRegisterClicked(evt.id)">Register</button>
+                <button type="button" class="btn btn-danger" ng-if="userEmail" ng-show="registeredEvents.indexOf(evt.id) > -1" ng-click="onDeregisterClicked(evt.id)">Deregister</button>
+            </div>
+        </div>
+    </form>
+</div>
