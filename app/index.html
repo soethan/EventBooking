@@ -27,16 +27,12 @@
     <!-- Page Content -->
     <div class="container page-content">
       <div class="row">
-        <div ui-view></div>
+        <div data-ui-view></div>
       </div>
     </div>
 
     <!-- Page Footer -->
-    <footer class="py-2 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Event Booking 2017</p>
-      </div>
-    </footer>
+    <div data-page-footer data-year="2017"></div>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="lib/angular-resource.js"></script>
@@ -52,6 +48,7 @@
     <script src="data/eventsMock.js"></script>
     <script src="common/directives/compareTo.directive.js"></script>
     <script src="common/directives/pageHeader.directive.js"></script>
+    <script src="common/directives/pageFooter.directive.js"></script>
     <script src="common/services/auth.service.js"></script>
     <script src="common/services/events.service.js"></script>
     <script src="login/login.controller.js"></script>

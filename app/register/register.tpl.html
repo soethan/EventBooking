@@ -7,8 +7,8 @@
         <div class="form-group">
             <label for="email">Email <span class="required">*</span></label>
             <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email"
-                ng-model="email" required 
-                ng-class="{'error-input': theForm.email.$dirty && theForm.email.$invalid}" />
+                data-ng-model="email" required 
+                data-ng-class="{'error-input': theForm.email.$dirty && theForm.email.$invalid}" />
             <small class="form-text error-text"
                 ng-show="theForm.email.$dirty && theForm.email.$invalid" >
                 Invalid email address!
@@ -18,17 +18,18 @@
         <div class="form-group">
             <label for="password">Password <span class="required">*</span></label>
             <input name="password" type="password" class="form-control" placeholder="Password"
-                ng-model="password" required 
-                ng-class="{'error-input': theForm.password.$dirty && theForm.password.$invalid}" />
+                data-ng-model="password" required 
+                data-ng-class="{'error-input': theForm.password.$dirty && theForm.password.$invalid}" />
         </div>
 
         <div class="form-group">
             <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
             <input name="confirmPassword" type="password" class="form-control" placeholder="Confirm Password"
-                ng-model="confirmPassword" required compare-to="password"
-                ng-class="{'error-input': theForm.confirmPassword.$dirty && theForm.confirmPassword.$invalid}" />
+                data-ng-model="confirmPassword" required 
+                data-compare-to="password"
+                data-ng-class="{'error-input': theForm.confirmPassword.$dirty && theForm.confirmPassword.$invalid}" />
             <small class="form-text error-text"
-                ng-show="theForm.confirmPassword.$dirty && theForm.confirmPassword.$invalid" >
+                data-ng-show="theForm.confirmPassword.$dirty && theForm.confirmPassword.$invalid" >
                 Confirm password does not match with Password!
             </small>
         </div>
@@ -36,14 +37,14 @@
         <div class="form-group">
             <label for="contactNumber">Contact Number <span class="required">*</span></label>
             <input name="contactNumber" type="number" class="form-control" placeholder="Contact Number"
-                ng-model="contactNumber" required 
-                ng-class="{'error-input': theForm.contactNumber.$dirty && theForm.contactNumber.$invalid}" />
+                data-ng-model="contactNumber" required 
+                data-ng-class="{'error-input': theForm.contactNumber.$dirty && theForm.contactNumber.$invalid}" />
         </div>
 
         <div class="form-group row">
             <div class="col-sm-8"></div>
             <div class="col-sm-4">
-                <button type="submit" class="btn btn-success" ng-click="onRegisterClicked()" ng-disabled="theForm.$invalid">Register</button>
+                <button type="submit" class="btn btn-success" data-ng-click="onRegisterClicked()" data-ng-disabled="theForm.$invalid">Register</button>
             </div>
         </div>
     </form>

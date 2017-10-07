@@ -3,7 +3,7 @@
         <div class="form-group row page-title">
             {{title}}
         </div>
-        <div ng-if="!userEmail" class="form-text error-text">Please login to register events</div>
+        <div data-ng-if="!userEmail" class="form-text error-text">Please login to register events</div>
         <div class="form-group row">
             <div class="col-sm-12">
                 <table class="table">
@@ -16,13 +16,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="evt in events">
-                        <td><a ui-sref="event-details({id: evt.id})">{{evt.name}}</a></td>
+                    <tr data-ng-repeat="evt in events">
+                        <td><a data-ui-sref="event-details({id: evt.id})">{{evt.name}}</a></td>
                         <td>{{evt.venue}}</td>
                         <td>{{evt.dateTime}}</td>
                         <td>
-                            <button type="button" class="btn btn-info" ng-click="onDetailsClicked(evt.id)">Details</button>
-                            <button type="button" class="btn btn-success" ng-if="userEmail" ng-disabled="registeredEvents.indexOf(evt.id) > -1" ng-click="onRegisterClicked(evt.id)">Register</button>
+                            <button type="button" class="btn btn-info" data-ng-click="onDetailsClicked(evt.id)">Details</button>
+                            <button type="button" class="btn btn-success" data-ng-if="userEmail" data-ng-disabled="registeredEvents.indexOf(evt.id) > -1" data-ng-click="onRegisterClicked(evt.id)">Register</button>
                         </td>
                     </tr>
                     </tbody>
