@@ -11,9 +11,9 @@
             return $resource("/api/events/:id");
         };
 
-        evtSvc.registerEvent = function (eventId) {
+        evtSvc.registerEvent = function (eventId, userEmail) {
             var deferred = $q.defer();
-            $http.post("/api/events/register", {id: eventId})
+            $http.post("/api/events/register", {id: eventId, userEmail: userEmail})
                 .then(function (response) {
                     deferred.resolve(response);
                 }, function (error) {
@@ -23,9 +23,9 @@
             return deferred.promise;
         };
 
-        evtSvc.deregisterEvent = function (eventId) {
+        evtSvc.deregisterEvent = function (eventId, userEmail) {
             var deferred = $q.defer();
-            $http.post("/api/events/deregister", {id: eventId})
+            $http.post("/api/events/deregister", {id: eventId, userEmail: userEmail})
                 .then(function (response) {
                     deferred.resolve(response);
                 }, function (error) {
@@ -35,9 +35,9 @@
             return deferred.promise;
         };
 
-        evtSvc.getMyEvents = function () {
+        evtSvc.getMyEvents = function (userEmail) {
             var deferred = $q.defer();
-            $http.get("/api/events/myevents")
+            $http.post("/api/events/myevents", {userEmail: userEmail})
                 .then(function (response) {
                     deferred.resolve(response);
                 }, function (error) {

@@ -48,7 +48,7 @@
     .run(function ($httpBackend, $localStorage) {
         var appStorage = $localStorage.$default({
             userList: [],
-            registeredEvents: []
+            registeredEvents: {}
         });
 
         var myEvents = appStorage.registeredEvents;
@@ -58,13 +58,16 @@
             .respond(events);
         
         $httpBackend
-            .whenGET(eventsUrl + "/myevents")
+            .whenPOST(eventsUrl + "/myevents")
             .respond(function (method, url, data) {
+                var evtData = angular.fromJson(data);
+                myEvents[evtData.userEmail] = myEvents[evtData.userEmail] || [];
+
                 var result = events.filter(function (evt) {
-                    return myEvents.indexOf(evt.id) > -1;
+                    return myEvents[evtData.userEmail].indexOf(evt.id) > -1;
                 });
                 console.log("myevents");
-                console.log(myEvents);
+                console.log(myEvents[evtData.userEmail]);
                 return [200, result, {}];
             });
 
@@ -92,9 +95,12 @@
             .whenPOST(eventsUrl + "/register")
             .respond(function (method, url, data) {
                 var evt = angular.fromJson(data);
+                console.log("register event before if...");
                 if (evt) {
+                    console.log("register event...");
                     console.log(evt);
-                    myEvents.push(evt.id);
+                    myEvents[evt.userEmail] = myEvents[evt.userEmail] || [];
+                    myEvents[evt.userEmail].push(evt.id);
                 }
                 return [200, evt, {}];
             });
@@ -106,13 +112,13 @@
                 console.log("before deregister");
                 console.log(myEvents);
                 if (evt) {
-                    myEvents = myEvents.filter(function (myEvtId) {
+                    myEvents[evt.userEmail] = (myEvents[evt.userEmail] || []).filter(function (myEvtId) {
                         return myEvtId != evt.id;
                     });
                 }
                 console.log("after deregister");
-                console.log(myEvents);
-                appStorage.registeredEvents = myEvents;
+                console.log(myEvents[evt.userEmail]);
+                appStorage.registeredEvents[evt.userEmail] = myEvents[evt.userEmail];
                 return [200, evt, {}];
             });
 

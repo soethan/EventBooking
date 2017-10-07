@@ -3,9 +3,9 @@
 
     angular.module('app')
     .controller('eventDetailsController',
-        ["$scope", "$state", "$stateParams", "$window", "eventsService", eventDetailsController]);
+        ["$rootScope", "$scope", "$state", "$stateParams", "$window", "eventsService", eventDetailsController]);
 
-    function eventDetailsController($scope, $state, $stateParams, $window, eventsService) {
+    function eventDetailsController($rootScope, $scope, $state, $stateParams, $window, eventsService) {
         $scope.id = $stateParams.id;
          
         $scope.evt = eventsService.getEvents().get({id: $scope.id}, function() {
@@ -15,14 +15,18 @@
         });
 
         $scope.getMyEvents = function () {
-            eventsService.getMyEvents().then(function(response) {
+            if(!$rootScope.userEmail) {
+                $scope.registeredEvents = [];
+                return;
+            }
+            eventsService.getMyEvents($rootScope.userEmail).then(function(response) {
                 $scope.registeredEvents = (response.data || []).map(function (evt) { return evt.id; });
             });
         };
 
         $scope.onRegisterClicked = function(id) {
             eventsService
-                .registerEvent(id)
+                .registerEvent(id, $rootScope.userEmail)
                 .then(function (response) {
                     $scope.getMyEvents();
                     alert("Event had been registered successfully!");
@@ -33,7 +37,7 @@
 
         $scope.onDeregisterClicked = function(id) {
             eventsService
-                .deregisterEvent(id)
+                .deregisterEvent(id, $rootScope.userEmail)
                 .then(function (response) {
                     alert("Event had been deregistered successfully!");
                     $scope.getMyEvents();

@@ -11,13 +11,13 @@ angular.module('app')
     "use strict";
     angular.module("app")
     .controller("myEventsController",
-        ["$scope", "$state", "eventsService", myEventsController]);
+        ["$rootScope", "$scope", "$state", "eventsService", myEventsController]);
 
-    function myEventsController($scope, $state, eventsService) {
+    function myEventsController($rootScope, $scope, $state, eventsService) {
         $scope.title = "My Events";
 
         $scope.getMyEvents = function () {
-            eventsService.getMyEvents().then(function(response) {
+            eventsService.getMyEvents($rootScope.userEmail).then(function(response) {
                 $scope.events = response.data;
             });
         };
@@ -29,7 +29,7 @@ angular.module('app')
 
         $scope.onDeregisterClicked = function(id) {
             eventsService
-                .deregisterEvent(id)
+                .deregisterEvent(id, $rootScope.userEmail)
                 .then(function (response) {
                     alert("Event had been deregistered successfully!");
                     $scope.getMyEvents();
