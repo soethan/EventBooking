@@ -7,7 +7,6 @@
 
         $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
             $rootScope.currentState = toState.name;
-            console.log("current state: " + toState.name);
         });
 
         $scope.$on('$stateChangeError', function(e, toState, toParams, fromState, fromParams, error) {

@@ -66,8 +66,6 @@
                 var result = events.filter(function (evt) {
                     return myEvents[evtData.userEmail].indexOf(evt.id) > -1;
                 });
-                console.log("myevents");
-                console.log(myEvents[evtData.userEmail]);
                 return [200, result, {}];
             });
 
@@ -95,10 +93,8 @@
             .whenPOST(eventsUrl + "/register")
             .respond(function (method, url, data) {
                 var evt = angular.fromJson(data);
-                console.log("register event before if...");
+
                 if (evt) {
-                    console.log("register event...");
-                    console.log(evt);
                     myEvents[evt.userEmail] = myEvents[evt.userEmail] || [];
                     myEvents[evt.userEmail].push(evt.id);
                 }
@@ -109,15 +105,11 @@
             .whenPOST(eventsUrl + "/deregister")
             .respond(function (method, url, data) {
                 var evt = angular.fromJson(data);
-                console.log("before deregister");
-                console.log(myEvents);
                 if (evt) {
                     myEvents[evt.userEmail] = (myEvents[evt.userEmail] || []).filter(function (myEvtId) {
                         return myEvtId != evt.id;
                     });
                 }
-                console.log("after deregister");
-                console.log(myEvents[evt.userEmail]);
                 appStorage.registeredEvents[evt.userEmail] = myEvents[evt.userEmail];
                 return [200, evt, {}];
             });
@@ -127,8 +119,6 @@
             .respond(function (method, url, data) {
                 var userInfo = angular.fromJson(data);
                 if (userInfo) {
-                    console.log("user registered");
-                    console.log(userInfo);
                     appStorage.userList.push(userInfo);
                 }
                 return [200, userInfo, {}];
@@ -139,8 +129,6 @@
             .respond(function (method, url, data) {
                 var userInfo = angular.fromJson(data);
                 if (userInfo) {
-                    console.log("user login");
-                    console.log(userInfo);
                     var authUser = appStorage.userList.filter(function (user) {
                         return (user.email === userInfo.email && user.password === userInfo.password);
                     });
