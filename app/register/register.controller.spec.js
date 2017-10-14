@@ -16,7 +16,6 @@ describe('registerController', function() {
 	}));
 
   it('should be defined', function() {
-
       var registerController = $controller('registerController', {
         $scope: $scope,
         $state: $state,
