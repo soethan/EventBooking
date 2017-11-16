@@ -1,12 +1,3 @@
-'use strict';
-
-angular.module('app')
-.controller('myEventsController', ["$scope", function($scope) {
-    $scope.title = "My Events";
-    
-}]);
-
-
 (function () {
     "use strict";
     angular.module("app")
