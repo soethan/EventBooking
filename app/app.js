@@ -49,3 +49,5 @@ angular.module('app', [
 .run(function($rootScope, $httpBackend) {
   $rootScope.appName = "Event Booking";
 });
+
+
